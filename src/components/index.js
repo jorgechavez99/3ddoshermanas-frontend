@@ -1,0 +1,7 @@
+export * from './BotonWhatsapp'
+export * from './Cabecera'
+export * from './Pie'
+export * from './Ilustracion3D'
+export * from './Secciones'
+export * from './PaginaEscaparate'
+export * from './JsonLd'
