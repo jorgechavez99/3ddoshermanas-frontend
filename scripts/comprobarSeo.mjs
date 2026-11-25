@@ -17,19 +17,50 @@ const comprobar = (condicion, mensaje) => {
   if (!condicion) errores.push(mensaje)
 }
 
+const puertoOcupado = async () => {
+  try {
+    await fetch(BASE)
+    return true
+  } catch {
+    return false
+  }
+}
+
+// IMPORTANTE: si el puerto ya responde, estariamos revisando un servidor viejo
+// con una build anterior y el resultado no valdria. Mejor abortar.
+if (await puertoOcupado()) {
+  console.error(`El puerto ${PUERTO} ya está en uso. Cierra ese proceso y vuelve a intentarlo.`)
+  process.exit(1)
+}
+
+// Next se lanza directamente (sin npx) y en su propio grupo de procesos para
+// poder cerrarlo entero al final y no dejar un next-server huerfano.
+const servidor = spawn(
+  process.execPath,
+  ['node_modules/next/dist/bin/next', 'start', '-p', String(PUERTO)],
+  { stdio: 'ignore', detached: true }
+)
+let servidorTerminado = false
+servidor.on('exit', () => {
+  servidorTerminado = true
+})
+
 const esperarServidor = async () => {
   for (let i = 0; i < 60; i++) {
-    try {
-      await fetch(BASE)
-      return
-    } catch {
-      await new Promise((r) => setTimeout(r, 500))
-    }
+    if (servidorTerminado) throw new Error('El servidor se cerró al arrancar. ¿Has ejecutado npm run build?')
+    if (await puertoOcupado()) return
+    await new Promise((r) => setTimeout(r, 500))
   }
   throw new Error('El servidor no arrancó en 30 segundos')
 }
 
-const servidor = spawn('npx', ['next', 'start', '-p', String(PUERTO)], { stdio: 'ignore' })
+const cerrarServidor = () => {
+  try {
+    process.kill(-servidor.pid)
+  } catch (error) {
+    if (error.code !== 'ESRCH') console.error('No se pudo cerrar el servidor de prueba:', error.message)
+  }
+}
 
 try {
   await esperarServidor()
@@ -64,7 +95,7 @@ try {
   const robots = await (await fetch(BASE + '/robots.txt')).text()
   comprobar(robots.includes('Sitemap:'), 'robots.txt: no indica el sitemap')
 } finally {
-  servidor.kill()
+  cerrarServidor()
 }
 
 if (errores.length) {

@@ -14,8 +14,8 @@
   --color-naranja: #ff6a13;      /* filamento regalos */
   --color-morado: #7a4dff;       /* filamento anime */
   --color-verde: #0e9fae;        /* filamento piezas (turquesa, no se confunde con WhatsApp) */
-  --color-whatsapp: #1fae5b;
-  --color-whatsapp-oscuro: #137a3f;
+  --color-whatsapp: #137a3f;        /* 5.5:1 con texto blanco (AA) */
+  --color-whatsapp-oscuro: #0d5c2f;
 
   --font-titulo: "Bricolage Grotesque Variable", system-ui, sans-serif;
   --font-texto: "Atkinson Hyperlegible", system-ui, sans-serif;

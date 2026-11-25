@@ -4,6 +4,7 @@
  * - WhatsappFlotante: boton fijo abajo a la derecha, visible en todas las paginas.
  */
 import { enlaceWhatsapp } from '@/lib/seo'
+import { negocio } from '@/data/negocio'
 
 const IconoWhatsapp = ({ className = 'h-5 w-5' }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -29,10 +30,10 @@ export const BotonWhatsapp = ({ mensaje, texto = 'Pedir presupuesto por WhatsApp
 
 export const WhatsappFlotante = () => (
   <a
-    href={enlaceWhatsapp('Hola, vengo de la web de 3D Dos Hermanas y quiero pedir un presupuesto.')}
+    href={enlaceWhatsapp(`Hola, vengo de la web de ${negocio.nombre} y quiero pedir un presupuesto.`)}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Escribir por WhatsApp a 3D Dos Hermanas"
+    aria-label={`Escribir por WhatsApp a ${negocio.nombre}`}
     className="fixed right-4 bottom-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-white shadow-lg hover:bg-whatsapp-oscuro sm:right-6 sm:bottom-6"
   >
     <IconoWhatsapp className="h-7 w-7" />

@@ -6,7 +6,6 @@ import { BotonWhatsapp } from '@/components'
 
 export const metadata = {
   title: 'Página no encontrada',
-  robots: { index: false },
 }
 
 export default function NoEncontrada() {

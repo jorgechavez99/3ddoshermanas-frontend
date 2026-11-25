@@ -5,7 +5,7 @@ Se asume Ubuntu y acceso por SSH como usuario con `sudo`.
 
 ## 1. Dominio
 
-1. Comprar `3ddoshermanas.com` (o `.es`) en IONOS.
+1. Comprar `3ddoshermanas.com` (o `.es`) en IONOS. Si es `.es`, cambiar el dominio en `.env`, en `deploy/nginx-3ddoshermanas.conf` y en los comandos de esta guía.
 2. En la zona DNS del dominio crear dos registros `A` que apunten a la IP del VPS:
    - `@` -> IP del VPS
    - `www` -> IP del VPS

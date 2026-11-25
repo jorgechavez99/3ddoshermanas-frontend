@@ -15,7 +15,7 @@ export const Pie = () => (
         <div className="text-white">
           <Logotipo />
         </div>
-        <p className="mt-3 max-w-xs">Taller de impresión 3D en Dos Hermanas (Sevilla).</p>
+        <p className="mt-3 max-w-xs">Impresión 3D por encargo en Dos Hermanas y Sevilla, con entrega en mano.</p>
       </div>
       <div>
         <h2 className="text-lg font-bold text-white">Qué hacemos</h2>

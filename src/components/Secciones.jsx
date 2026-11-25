@@ -55,7 +55,7 @@ export const Escaparates = () => (
             <div className="flex flex-1 flex-col p-6">
               <h3 className="text-2xl font-extrabold">{e.titulo}</h3>
               <p className="mt-2 flex-1 text-tinta-suave">{e.resumen}</p>
-              <span className={`mt-5 font-bold ${c.texto} group-hover:underline`}>
+              <span className="mt-5 font-bold text-tinta underline decoration-2 underline-offset-4 group-hover:decoration-4">
                 Ver {e.etiqueta.toLowerCase()}
               </span>
             </div>

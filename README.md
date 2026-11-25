@@ -1,6 +1,6 @@
 # 3D Dos Hermanas - Web
 
-Web del taller de impresión 3D 3D Dos Hermanas (Dos Hermanas, Sevilla), pensada para aparecer en Google en búsquedas locales y llevar a cada visita a pedir presupuesto por WhatsApp.
+Web de 3D Dos Hermanas, servicio de impresión 3D por encargo en Dos Hermanas y Sevilla, pensada para aparecer en Google en búsquedas locales y llevar a cada visita a pedir presupuesto por WhatsApp.
 
 ## Qué hace
 
