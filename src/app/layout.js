@@ -8,7 +8,7 @@ import '@fontsource/atkinson-hyperlegible/700.css'
 import './globals.css'
 import { Cabecera, Pie, WhatsappFlotante, JsonLd } from '@/components'
 import { negocio } from '@/data/negocio'
-import { schemaNegocio, urlSitio } from '@/lib/seo'
+import { schemaNegocio, urlSitio, esVersionProvisional } from '@/lib/seo'
 
 export const metadata = {
   metadataBase: new URL(urlSitio()),
@@ -19,6 +19,8 @@ export const metadata = {
   description:
     'Impresión 3D en Dos Hermanas y Sevilla: regalos personalizados, figuras de anime, llaveros y piezas o repuestos a medida. Presupuesto gratis por WhatsApp.',
   formatDetection: { telephone: false },
+  // Versiones provisionales: visibles para enseñarlas, pero fuera de Google.
+  ...(esVersionProvisional() && { robots: { index: false, follow: false } }),
 }
 
 export const viewport = {

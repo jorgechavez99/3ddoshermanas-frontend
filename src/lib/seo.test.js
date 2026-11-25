@@ -4,7 +4,7 @@
  * que leera Google salen siempre bien formados.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { urlAbsoluta, enlaceWhatsapp, schemaNegocio, metadatosPagina } from './seo'
+import { urlAbsoluta, enlaceWhatsapp, schemaNegocio, metadatosPagina, esVersionProvisional } from './seo'
 
 describe('urlAbsoluta', () => {
   const original = process.env.NEXT_PUBLIC_SITE_URL
@@ -73,5 +73,17 @@ describe('schemaNegocio', () => {
     expect(schema.openingHoursSpecification[0].dayOfWeek).toHaveLength(6)
     expect(schema.openingHoursSpecification[0].opens).toBe('10:00')
     expect(schema.openingHoursSpecification[0].closes).toBe('21:00')
+  })
+})
+
+describe('esVersionProvisional', () => {
+  afterEach(() => {
+    delete process.env.NEXT_PUBLIC_NO_INDEXAR
+  })
+
+  it('solo es provisional con NEXT_PUBLIC_NO_INDEXAR=true', () => {
+    expect(esVersionProvisional()).toBe(false)
+    process.env.NEXT_PUBLIC_NO_INDEXAR = 'true'
+    expect(esVersionProvisional()).toBe(true)
   })
 })

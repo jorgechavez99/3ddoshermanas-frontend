@@ -42,3 +42,6 @@ next-env.d.ts
 
 # La plantilla de variables si se sube al repo
 !.env_template
+
+# Exportacion estatica para GitHub Pages
+/out/
