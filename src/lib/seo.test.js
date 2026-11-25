@@ -4,7 +4,7 @@
  * que leera Google salen siempre bien formados.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { urlAbsoluta, enlaceWhatsapp, schemaNegocio } from './seo'
+import { urlAbsoluta, enlaceWhatsapp, schemaNegocio, metadatosPagina } from './seo'
 
 describe('urlAbsoluta', () => {
   const original = process.env.NEXT_PUBLIC_SITE_URL
@@ -26,6 +26,16 @@ describe('urlAbsoluta', () => {
   it('acepta rutas sin barra inicial', () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://3ddoshermanas.com'
     expect(urlAbsoluta('figuras-anime')).toBe('https://3ddoshermanas.com/figuras-anime')
+  })
+})
+
+describe('metadatosPagina', () => {
+  it('genera canonical absoluto y Open Graph en español', () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://3ddoshermanas.com'
+    const meta = metadatosPagina({ titulo: 'Contacto', descripcion: 'Escríbenos', ruta: '/contacto' })
+    expect(meta.title).toBe('Contacto')
+    expect(meta.alternates.canonical).toBe('https://3ddoshermanas.com/contacto')
+    expect(meta.openGraph.locale).toBe('es_ES')
   })
 })
 

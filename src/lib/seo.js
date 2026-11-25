@@ -26,6 +26,26 @@ export const urlAbsoluta = (ruta = '/') => {
 }
 
 /**
+ * Metadatos de Next para una pagina: titulo, descripcion, canonical y Open Graph.
+ * El nombre del negocio lo añade la plantilla de titulo del layout.
+ * @param {{titulo:string, descripcion:string, ruta:string}} datos
+ * @returns {import('next').Metadata}
+ */
+export const metadatosPagina = ({ titulo, descripcion, ruta }) => ({
+  title: titulo,
+  description: descripcion,
+  alternates: { canonical: urlAbsoluta(ruta) },
+  openGraph: {
+    title: `${titulo} | ${negocio.nombre}`,
+    description: descripcion,
+    url: urlAbsoluta(ruta),
+    siteName: negocio.nombre,
+    locale: 'es_ES',
+    type: 'website',
+  },
+})
+
+/**
  * Enlace a WhatsApp con un mensaje ya escrito.
  * El mensaje se codifica porque las tildes, espacios y signos de pregunta
  * rompen el enlace si se meten tal cual.
