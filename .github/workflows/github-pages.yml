@@ -3,9 +3,9 @@
 # (sin indexar en Google) hasta tener dominio propio y VPS.
 name: Publicar en GitHub Pages
 
+# Desactivado el automatico: la web vive en el VPS. Se puede lanzar a mano
+# desde la pestaña Actions si se quiere una copia en GitHub Pages.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
