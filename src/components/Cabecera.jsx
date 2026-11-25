@@ -7,15 +7,29 @@ import Link from 'next/link'
 import { escaparates } from '@/data/escaparates'
 import { negocio } from '@/data/negocio'
 
+/**
+ * Icono del logotipo (mismo dibujo que public/logo-icono.svg).
+ * La barra usa currentColor para verse tanto en fondo claro como oscuro.
+ */
+export const IconoLogo = ({ className = 'h-10 w-12' }) => (
+  <svg viewBox="0 0 120 100" aria-hidden="true" className={className}>
+    <rect x="34" y="6" width="52" height="5" rx="2.5" fill="currentColor" />
+    <path d="M52 2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2v4h-3l-3 6-3-6h-3v-4h-2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#ff6a13" />
+    <rect x="38" y="38" width="44" height="17" rx="8.5" fill="#ff6a13" />
+    <rect x="25" y="59" width="70" height="17" rx="8.5" fill="#7a4dff" />
+    <rect x="10" y="80" width="100" height="17" rx="8.5" fill="#0e9fae" />
+  </svg>
+)
+
+// Texto del logo como en el diseño original: "3D" grande, "Dos Hermanas" debajo.
 export const Logotipo = () => (
-  <span className="flex items-center gap-2.5">
-    {/* Marca: tres capas de filamento apiladas */}
-    <svg viewBox="0 0 28 24" aria-hidden="true" className="h-7 w-8">
-      <rect x="2" y="17" width="24" height="5" rx="2" fill="#0e9fae" />
-      <rect x="5" y="10" width="18" height="5" rx="2" fill="#7a4dff" />
-      <rect x="9" y="3" width="10" height="5" rx="2" fill="#ff6a13" />
-    </svg>
-    <span className="font-titulo text-xl font-extrabold tracking-tight">{negocio.nombre}</span>
+  <span className="flex items-center gap-3">
+    <IconoLogo />
+    <span className="font-titulo leading-[0.9] font-extrabold uppercase">
+      <span aria-hidden="true" className="block text-2xl">3D <span className="text-base">Dos</span></span>
+      <span aria-hidden="true" className="block text-base tracking-wide">Hermanas</span>
+      <span className="sr-only">{negocio.nombre}</span>
+    </span>
   </span>
 )
 
