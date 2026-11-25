@@ -10,7 +10,7 @@ import { spawn } from 'node:child_process'
 
 const PUERTO = 3123
 const BASE = `http://localhost:${PUERTO}`
-const RUTAS = ['/', '/regalos-personalizados', '/figuras-anime', '/piezas-repuestos-3d', '/contacto']
+const RUTAS = ['/', '/regalos-personalizados', '/figuras-anime', '/piezas-repuestos-3d', '/disena-tu-chibi', '/contacto']
 
 const errores = []
 const comprobar = (condicion, mensaje) => {

@@ -55,7 +55,7 @@ export const escaparates = [
     intro:
       'Para quien vive el anime. Imprimimos figuras personalizadas en estilo chibi, accesorios y soportes para lucir tu colección, y decoración para tu habitación o tu setup.',
     ideas: [
-      'Figura personalizada estilo chibi a partir de tu foto o tu personaje',
+      'Figura personalizada estilo chibi a partir de tu foto (diséñala en "Diseña tu chibi")',
       'Soportes y expositores para Funko y figuras',
       'Llaveros y pines de tus personajes favoritos',
       'Decoración para tu setup gamer u otaku',
