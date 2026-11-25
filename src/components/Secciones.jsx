@@ -49,9 +49,9 @@ export const Escaparates = () => (
           <Link
             key={e.slug}
             href={`/${e.slug}`}
-            className="group flex flex-col overflow-hidden rounded-2xl bg-papel ring-1 ring-tinta/10 hover:ring-tinta/30"
+            className={`group flex flex-col overflow-hidden rounded-2xl ${c.suave} ring-1 ring-tinta/5 hover:ring-tinta/25`}
           >
-            <div className={`lineas-capa h-24 ${c.texto}`} aria-hidden="true" />
+            <div className={`lineas-capa h-24 ${c.pastel}`} aria-hidden="true" />
             <div className="flex flex-1 flex-col p-6">
               <h3 className="text-2xl font-extrabold">{e.titulo}</h3>
               <p className="mt-2 flex-1 text-tinta-suave">{e.resumen}</p>
