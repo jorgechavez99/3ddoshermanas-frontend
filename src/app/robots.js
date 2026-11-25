@@ -9,7 +9,7 @@ export const dynamic = 'force-static'
 export default function robots() {
   if (esVersionProvisional()) return { rules: { userAgent: '*', disallow: '/' } }
   return {
-    rules: { userAgent: '*', allow: '/' },
+    rules: { userAgent: '*', allow: '/', disallow: '/admin/' },
     sitemap: urlAbsoluta('/sitemap.xml'),
   }
 }

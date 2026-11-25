@@ -20,6 +20,7 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.8,
     })),
+    { url: urlAbsoluta('/disena-tu-chibi'), changeFrequency: 'monthly', priority: 0.9 },
     { url: urlAbsoluta('/contacto'), changeFrequency: 'yearly', priority: 0.5 },
   ]
 }
