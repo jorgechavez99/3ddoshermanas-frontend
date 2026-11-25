@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 3D Dos Hermanas - Web
 
-## Getting Started
+Web del taller de impresión 3D 3D Dos Hermanas (Dos Hermanas, Sevilla), pensada para aparecer en Google en búsquedas locales y llevar a cada visita a pedir presupuesto por WhatsApp.
 
-First, run the development server:
+## Qué hace
+
+- Página de inicio con los tres escaparates, precios orientativos, cómo funciona y zonas de entrega.
+- Una página por escaparate (regalos, anime, piezas) con sus palabras clave y preguntas frecuentes.
+- Botón de WhatsApp en todas las páginas, con el mensaje ya escrito según la página.
+- SEO técnico: HTML generado en servidor, títulos y descripciones por página, canonical, `sitemap.xml`, `robots.txt` y datos estructurados `LocalBusiness` y `FAQPage`.
+- Página 404 en español.
+
+## Tecnologías
+
+Next.js 15 (App Router), React 19, Tailwind CSS 4, Vitest. Fuentes Bricolage Grotesque y Atkinson Hyperlegible (servidas desde el propio proyecto con Fontsource).
+
+## Puesta en marcha
 
 ```bash
+git clone https://github.com/jorgechavez99/3ddoshermanas-web.git
+cd 3ddoshermanas-web
+npm install
+cp .env_template .env
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Script | Qué hace |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Compila la web para producción |
+| `npm start` | Sirve la web compilada (puerto 3000) |
+| `npm test` | Tests de los helpers de SEO |
+| `npm run comprobar-seo` | Tras `build`, revisa títulos, h1, canonical, WhatsApp, 404, sitemap y robots |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Variables de entorno
 
-## Learn More
+| Variable | Para qué sirve | Ejemplo |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Dominio real; se usa en canonical, sitemap y datos estructurados. Se lee al compilar. | `https://3ddoshermanas.com` |
 
-To learn more about Next.js, take a look at the following resources:
+## Estructura de carpetas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/            # páginas (una carpeta por ruta), layout, sitemap, robots, 404
+  components/     # componentes React + index.js (barrel)
+  data/           # negocio.js y escaparates.js: TODO el contenido editable
+  lib/seo.js      # helpers de SEO (URLs, WhatsApp, JSON-LD) y sus tests
+scripts/          # comprobarSeo.mjs
+deploy/           # configuración de PM2 y Nginx para el VPS
+docs/             # diseño y plan de trabajo
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Cómo cambiar contenidos
 
-## Deploy on Vercel
+- Teléfono, horario, zonas, precios o redes: `src/data/negocio.js`. Si cambias algo aquí, cámbialo también en la ficha de Google: deben coincidir.
+- Textos, ideas y preguntas de cada escaparate: `src/data/escaparates.js`.
+- Un escaparate nuevo: añadirlo en `escaparates.js` y crear `src/app/<slug>/page.js` copiando uno existente. Entra solo en el menú, el pie y el sitemap; añadir su ruta a `RUTAS` en `scripts/comprobarSeo.mjs`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Despliegue
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ver [DEPLOY.md](DEPLOY.md): VPS de IONOS con Node, PM2, Nginx y certificado SSL de Let's Encrypt.
+
+## Decisiones y pendientes
+
+- Next.js en vez de Vite: Vite genera una SPA que Google ve vacía al principio; Next entrega el HTML completo.
+- Sin formulario ni base de datos: todo el contacto entra por WhatsApp.
+- Sin dirección postal en ninguna parte: es una empresa de servicios en zona, igual que en la ficha de Google.
+- Pendiente: comprar el dominio, sustituir las ilustraciones por fotos reales (con `next/image`) y añadir una galería por escaparate.
+- Futuro: catálogo o tienda online y sección de productos IoT.
+
+## Autores
+
+Jorge Chávez y Mary - 3D Dos Hermanas.
