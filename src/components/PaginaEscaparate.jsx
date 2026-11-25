@@ -42,8 +42,8 @@ export const PaginaEscaparate = ({ slug }) => {
   return (
     <>
       <JsonLd datos={schemaFaq} />
-      <section className="bg-papel">
-        <div className={`lineas-capa h-3 ${c.texto}`} aria-hidden="true" />
+      <section className={c.suave}>
+        <div className={`lineas-capa h-3 ${c.pastel}`} aria-hidden="true" />
         <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-12 md:grid-cols-[1.3fr_1fr] md:py-16">
           <div>
             <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{e.titulo}</h1>
