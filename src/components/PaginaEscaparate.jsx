@@ -4,6 +4,8 @@
  * preguntas frecuentes directamente en los resultados.
  */
 import { getEscaparate } from '@/data/escaparates'
+import { getProductos } from '@/lib/apiProductos'
+import { Galeria } from './Galeria'
 import { colores } from './colores'
 import { BotonWhatsapp } from './BotonWhatsapp'
 import { Ilustracion3D } from './Ilustracion3D'
@@ -24,8 +26,9 @@ export const PreguntasFrecuentes = ({ faqs }) => (
   </div>
 )
 
-export const PaginaEscaparate = ({ slug }) => {
+export const PaginaEscaparate = async ({ slug }) => {
   const e = getEscaparate(slug)
+  const productos = await getProductos(slug)
   const c = colores[e.color]
   const mensaje = `Hola, vengo de la web y me interesa: ${e.titulo.toLowerCase()}. ¿Me dais presupuesto?`
 
@@ -55,6 +58,8 @@ export const PaginaEscaparate = ({ slug }) => {
           <Ilustracion3D color={c.hex} className="mx-auto w-full max-w-xs" />
         </div>
       </section>
+
+      <Galeria productos={productos} color={e.color} />
 
       <section className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-2">
         <div>
