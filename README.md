@@ -74,3 +74,13 @@ Ver [DEPLOY.md](DEPLOY.md): VPS de IONOS con Node, PM2, Nginx y certificado SSL 
 ## Autores
 
 Jorge Chávez y Mary - 3D Dos Hermanas.
+
+## Versión provisional en GitHub Pages
+
+Mientras no haya dominio ni VPS, cada push a `main` publica la web en
+https://jorgechavez99.github.io/3ddoshermanas-frontend/ mediante el workflow
+`.github/workflows/github-pages.yml`.
+
+- Se exporta como archivos estáticos (`PUBLICAR_EN=github-pages`) y sin galería, porque la API aún no está publicada.
+- Lleva `noindex` y un `robots.txt` que bloquea a Google a propósito: así esta URL temporal no compite después con `3ddoshermanas.com`.
+- Probarla en local: `PUBLICAR_EN=github-pages npm run build` genera la carpeta `out/`.
