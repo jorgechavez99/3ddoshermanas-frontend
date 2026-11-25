@@ -25,8 +25,8 @@ sudo npm install -g pm2
 ```bash
 sudo mkdir -p /var/www && sudo chown $USER /var/www
 cd /var/www
-git clone https://github.com/jorgechavez99/3ddoshermanas-web.git
-cd 3ddoshermanas-web
+git clone https://github.com/jorgechavez99/3ddoshermanas-frontend.git
+cd 3ddoshermanas-frontend
 cp .env_template .env          # revisar NEXT_PUBLIC_SITE_URL
 npm ci
 npm run build
@@ -65,7 +65,7 @@ Certbot añade el HTTPS y la renovación automática.
 ## 7. Actualizar la web
 
 ```bash
-cd /var/www/3ddoshermanas-web
+cd /var/www/3ddoshermanas-frontend
 git pull origin main
 npm ci
 npm run build && npm run comprobar-seo && pm2 reload 3ddoshermanas-web

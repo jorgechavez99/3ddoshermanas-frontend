@@ -17,8 +17,8 @@ Next.js 15 (App Router), React 19, Tailwind CSS 4, Vitest. Fuentes Bricolage Gro
 ## Puesta en marcha
 
 ```bash
-git clone https://github.com/jorgechavez99/3ddoshermanas-web.git
-cd 3ddoshermanas-web
+git clone https://github.com/jorgechavez99/3ddoshermanas-frontend.git
+cd 3ddoshermanas-frontend
 npm install
 cp .env_template .env
 npm run dev
