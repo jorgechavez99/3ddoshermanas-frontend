@@ -49,6 +49,11 @@ export const Cabecera = () => (
             </li>
           ))}
           <li>
+            <Link href="/disena-tu-chibi" className="block rounded-full bg-morado-suave px-3.5 py-2 text-morado hover:bg-morado-pastel/60">
+              Diseña tu chibi
+            </Link>
+          </li>
+          <li>
             <Link href="/contacto" className="block rounded-full px-3.5 py-2 hover:bg-placa">
               Contacto
             </Link>
