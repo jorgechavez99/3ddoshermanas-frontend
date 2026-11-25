@@ -8,6 +8,13 @@ import { negocio } from '@/data/negocio'
 const URL_POR_DEFECTO = 'https://3ddoshermanas.com'
 
 /**
+ * true en versiones provisionales (GitHub Pages): Google no debe indexarlas
+ * para no competir despues con el dominio definitivo.
+ * @returns {boolean}
+ */
+export const esVersionProvisional = () => process.env.NEXT_PUBLIC_NO_INDEXAR === 'true'
+
+/**
  * Devuelve la URL base del sitio sin barra final.
  * Se lee en cada llamada para que el valor de .env se respete en build.
  * @returns {string}

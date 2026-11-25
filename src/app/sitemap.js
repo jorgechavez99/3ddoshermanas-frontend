@@ -8,6 +8,9 @@
 import { escaparates } from '@/data/escaparates'
 import { urlAbsoluta } from '@/lib/seo'
 
+// Se genera una sola vez al compilar (necesario tambien para GitHub Pages).
+export const dynamic = 'force-static'
+
 export default function sitemap() {
   return [
     { url: urlAbsoluta('/'), changeFrequency: 'weekly', priority: 1 },
