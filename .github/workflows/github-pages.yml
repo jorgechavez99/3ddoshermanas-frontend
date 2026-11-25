@@ -1,5 +1,6 @@
 # Publica la web en GitHub Pages en cada push a main.
-# Version provisional (sin indexar en Google) hasta tener dominio y VPS.
+# Version provisional en https://3ddoshermanas.gastroton.com (sin indexar en
+# Google) hasta tener dominio propio y VPS.
 name: Publicar en GitHub Pages
 
 on:
@@ -30,7 +31,8 @@ jobs:
       - run: npm run build
         env:
           PUBLICAR_EN: github-pages
-          NEXT_PUBLIC_SITE_URL: https://jorgechavez99.github.io/3ddoshermanas-frontend
+          # Subdominio provisional. Configurado tambien en Settings > Pages > Custom domain.
+          NEXT_PUBLIC_SITE_URL: https://3ddoshermanas.gastroton.com
           NEXT_PUBLIC_NO_INDEXAR: 'true'
       # Sin esto GitHub Pages ignora la carpeta _next de Next.js.
       - run: touch out/.nojekyll
